@@ -19,6 +19,11 @@ namespace Task2
         /// <param name="array">Array for sorting</param>
         public static void OrderBySumAsc(int[][] array)
         {
+            if (array == null)
+                throw new ArgumentNullException();
+            if (!array.Any())
+                throw new ArgumentException();
+
             for (int i = array.Length - 1; i > 0; i--)
             {
                 for (int j = 0; j < i; j++)
@@ -35,6 +40,11 @@ namespace Task2
         /// <param name="array">Array for sorting</param>
         public static void OrderBySumDesc(int[][] array)
         {
+            if (array == null)
+                throw new ArgumentNullException();
+            if (!array.Any())
+                throw new ArgumentException();
+
             for (int i = array.Length - 1; i > 0; i--)
             {
                 for (int j = 0; j < i; j++)
@@ -51,6 +61,11 @@ namespace Task2
         /// <param name="array">Array for sorting</param>
         public static void OrderByMaxElementAsc(int[][] array)
         {
+            if (array == null)
+                throw new ArgumentNullException();
+            if (!array.Any())
+                throw new ArgumentException();
+
             for (int i = array.Length - 1; i > 0; i--)
             {
                 for (int j = 0; j < i; j++)
@@ -67,6 +82,11 @@ namespace Task2
         /// <param name="array">Array for sorting</param>
         public static void OrderByMaxElementDesc(int[][] array)
         {
+            if (array == null)
+                throw new ArgumentNullException();
+            if (!array.Any())
+                throw new ArgumentException();
+
             for (int i = array.Length - 1; i > 0; i--)
             {
                 for (int j = 0; j < i; j++)
@@ -83,6 +103,11 @@ namespace Task2
         /// <param name="array">Array for sorting</param>
         public static void OrderByMinElementAsc(int[][] array)
         {
+            if (array == null)
+                throw new ArgumentNullException();
+            if (!array.Any())
+                throw new ArgumentException();
+
             for (int i = array.Length - 1; i > 0; i--)
             {
                 for (int j = 0; j < i; j++)
@@ -99,6 +124,11 @@ namespace Task2
         /// <param name="array">Array for sorting</param>
         public static void OrderByMinElementDesc(int[][] array)
         {
+            if (array == null)
+                throw new ArgumentNullException();
+            if (!array.Any())
+                throw new ArgumentException();
+
             for (int i = array.Length - 1; i > 0; i--)
             {
                 for (int j = 0; j < i; j++)
