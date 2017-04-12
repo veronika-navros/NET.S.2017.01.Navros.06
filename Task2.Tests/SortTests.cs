@@ -10,7 +10,7 @@ using NUnit.Framework.Internal;
 namespace Task2.Tests
 {
     [TestFixture]
-    public class BubbleSortTests
+    public class SortTests
     {
         #region OrderBySumAsc Tests
 
@@ -18,7 +18,7 @@ namespace Task2.Tests
         {
             get
             {
-                yield return new [] { new[]
+                yield return new[] { new[]
                 {
                     new[] {5, 2, 7, 0, 1},
                     new[] {8, 3},
@@ -65,11 +65,21 @@ namespace Task2.Tests
             }
         }
 
-        [Test, TestCaseSource("OrderBySumAscData")]
+        [Test, TestCaseSource(nameof(OrderBySumAscData))]
         public void OrderBySumAsc_ArraySortedByElementsSumInRowAscending(int[][][] testData)
         {
             int[][] sourceArray = testData[0];
-            BubbleSort.OrderBySumAsc(sourceArray);
+            BubbleSort.Sort(new ComparerBySumAsc(), sourceArray);
+            IStructuralEquatable resultArray = testData[1];
+
+            Assert.AreEqual(resultArray.Equals(sourceArray, StructuralComparisons.StructuralEqualityComparer), true);
+        }
+
+        [Test, TestCaseSource(nameof(OrderBySumAscData))]
+        public void OrderBySumAscConverse_ArraySortedByElementsSumInRowAscending(int[][][] testData)
+        {
+            int[][] sourceArray = testData[0];
+            BubbleSortConverse.Sort(new ComparerBySumAsc(), sourceArray);
             IStructuralEquatable resultArray = testData[1];
 
             Assert.AreEqual(resultArray.Equals(sourceArray, StructuralComparisons.StructuralEqualityComparer), true);
@@ -130,12 +140,21 @@ namespace Task2.Tests
             }
         }
 
-
-        [Test, TestCaseSource("OrderBySumDescData")]
+        [Test, TestCaseSource(nameof(OrderBySumDescData))]
         public void OrderBySumDesc_ArraySortedByElementsSumInRowDescending(int[][][] testData)
         {
             int[][] sourceArray = testData[0];
-            BubbleSort.OrderBySumDesc(sourceArray);
+            BubbleSort.Sort(new CompareBySumDesc(), sourceArray);
+            IStructuralEquatable resultArray = testData[1];
+
+            Assert.AreEqual(resultArray.Equals(sourceArray, StructuralComparisons.StructuralEqualityComparer), true);
+        }
+
+        [Test, TestCaseSource(nameof(OrderBySumDescData))]
+        public void OrderBySumDescConverse_ArraySortedByElementsSumInRowDescending(int[][][] testData)
+        {
+            int[][] sourceArray = testData[0];
+            BubbleSortConverse.Sort(new CompareBySumDesc(), sourceArray);
             IStructuralEquatable resultArray = testData[1];
 
             Assert.AreEqual(resultArray.Equals(sourceArray, StructuralComparisons.StructuralEqualityComparer), true);
@@ -196,11 +215,21 @@ namespace Task2.Tests
             }
         }
 
-        [Test, TestCaseSource("OrderByMaxElementAscData")]
+        [Test, TestCaseSource(nameof(OrderByMaxElementAscData))]
         public void OrderByMaxElementAsc_ArraySortedByMaxElementInRowAscending(int[][][] testData)
         {
             int[][] sourceArray = testData[0];
-            BubbleSort.OrderByMaxElementAsc(sourceArray);
+            BubbleSort.Sort(new CompareByMaxElementAsc(), sourceArray);
+            IStructuralEquatable resultArray = testData[1];
+
+            Assert.AreEqual(resultArray.Equals(sourceArray, StructuralComparisons.StructuralEqualityComparer), true);
+        }
+
+        [Test, TestCaseSource(nameof(OrderByMaxElementAscData))]
+        public void OrderByMaxElementAscConverse_ArraySortedByMaxElementInRowAscending(int[][][] testData)
+        {
+            int[][] sourceArray = testData[0];
+            BubbleSortConverse.Sort(new CompareByMaxElementAsc(), sourceArray);
             IStructuralEquatable resultArray = testData[1];
 
             Assert.AreEqual(resultArray.Equals(sourceArray, StructuralComparisons.StructuralEqualityComparer), true);
@@ -222,7 +251,7 @@ namespace Task2.Tests
                     new[] {4}
                 },
                 new[]
-                {                  
+                {
                     new[] {8, 3},
                     new[] {5, 4, 8},
                     new[] {5, 2, 7, 0, 1},
@@ -261,11 +290,21 @@ namespace Task2.Tests
             }
         }
 
-        [Test, TestCaseSource("OrderByMaxElementDescData")]
+        [Test, TestCaseSource(nameof(OrderByMaxElementDescData))]
         public void OrderByMaxElementDesc_ArraySortedByMaxElementInRowDescending(int[][][] testData)
         {
             int[][] sourceArray = testData[0];
-            BubbleSort.OrderByMaxElementDesc(sourceArray);
+            BubbleSort.Sort(new CompareByMaxElementDesc(), sourceArray);
+            IStructuralEquatable resultArray = testData[1];
+
+            Assert.AreEqual(resultArray.Equals(sourceArray, StructuralComparisons.StructuralEqualityComparer), true);
+        }
+
+        [Test, TestCaseSource(nameof(OrderByMaxElementDescData))]
+        public void OrderByMaxElementDescConverse_ArraySortedByMaxElementInRowDescending(int[][][] testData)
+        {
+            int[][] sourceArray = testData[0];
+            BubbleSortConverse.Sort(new CompareByMaxElementDesc(), sourceArray);
             IStructuralEquatable resultArray = testData[1];
 
             Assert.AreEqual(resultArray.Equals(sourceArray, StructuralComparisons.StructuralEqualityComparer), true);
@@ -326,11 +365,21 @@ namespace Task2.Tests
             }
         }
 
-        [Test, TestCaseSource("OrderByMinElementAscData")]
+        [Test, TestCaseSource(nameof(OrderByMinElementAscData))]
         public void OrderByMinElementAsc_ArraySortedByMinElementInRowAscending(int[][][] testData)
         {
             int[][] sourceArray = testData[0];
-            BubbleSort.OrderByMinElementAsc(sourceArray);
+            BubbleSort.Sort(new CompareByMinElementAsc(), sourceArray);
+            IStructuralEquatable resultArray = testData[1];
+
+            Assert.AreEqual(resultArray.Equals(sourceArray, StructuralComparisons.StructuralEqualityComparer), true);
+        }
+
+        [Test, TestCaseSource(nameof(OrderByMinElementAscData))]
+        public void OrderByMinElementAscConverse_ArraySortedByMinElementInRowAscending(int[][][] testData)
+        {
+            int[][] sourceArray = testData[0];
+            BubbleSortConverse.Sort(new CompareByMinElementAsc(), sourceArray);
             IStructuralEquatable resultArray = testData[1];
 
             Assert.AreEqual(resultArray.Equals(sourceArray, StructuralComparisons.StructuralEqualityComparer), true);
@@ -367,7 +416,7 @@ namespace Task2.Tests
                     new[] {6, 2, 6, 6, 7}
                 },
                 new[]
-                {                   
+                {
                     new[] {8, 8},
                     new[] {7},
                     new[] {6, 2, 6, 6, 7},
@@ -391,11 +440,21 @@ namespace Task2.Tests
             }
         }
 
-        [Test, TestCaseSource("OrderByMinElementDescData")]
+        [Test, TestCaseSource(nameof(OrderByMinElementDescData))]
         public void OrderByMinElementDesc_ArraySortedByMinElementInRowDescending(int[][][] testData)
         {
             int[][] sourceArray = testData[0];
-            BubbleSort.OrderByMinElementDesc(sourceArray);
+            BubbleSort.Sort(new CompareByMinElementDesc(), sourceArray);
+            IStructuralEquatable resultArray = testData[1];
+
+            Assert.AreEqual(resultArray.Equals(sourceArray, StructuralComparisons.StructuralEqualityComparer), true);
+        }
+
+        [Test, TestCaseSource(nameof(OrderByMinElementDescData))]
+        public void OrderByMinElementDescConverse_ArraySortedByMinElementInRowDescending(int[][][] testData)
+        {
+            int[][] sourceArray = testData[0];
+            BubbleSortConverse.Sort(new CompareByMinElementDesc(), sourceArray);
             IStructuralEquatable resultArray = testData[1];
 
             Assert.AreEqual(resultArray.Equals(sourceArray, StructuralComparisons.StructuralEqualityComparer), true);
